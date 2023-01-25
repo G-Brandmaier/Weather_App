@@ -1,16 +1,16 @@
-import GetData from "../../service/GetData.jsx";
 //{info.location.location ? <p>{info.location.location.country}</p> : null}
 import { useState, useEffect } from "react";
 import WeatherItem from "../WeatherItem/WeatherItem.jsx";
+import Home from "../Home/Home.jsx";
 
 const GetSearch = ()=>{
     const [weatherData, setWeatherData] = useState({});
 
-    const search = ()=>{
-
-    };
     useEffect(()=>{
-        let search = "Uppsala";
+        Search("Uppsala");
+    },[])
+    const Search = (search)=>{   
+
         let url = "https://api.weatherapi.com/v1/forecast.json?key=aea4605b06e943e2818110603232201&q=" + search +"&days=1&aqi=no&alerts=no";
         
         fetch(url).then(response => response.json())
@@ -42,15 +42,21 @@ const GetSearch = ()=>{
             forecastMoonset};
 
             setWeatherData(weather);
-        });        
-        
-    },[]);
+        });                  
+    };
 
     return(
         <>
-            <WeatherItem weather = {weatherData}/>  
+            <Home callback = {Search}/>
+            <div className="homeDiv">
+                <div className="weatherDiv">
+                    <h3>Väder idag:</h3>
+                    <WeatherItem weather = {weatherData}/>
+                </div>
+            </div>
         </>
     );
+
 };
 
 export default GetSearch;
