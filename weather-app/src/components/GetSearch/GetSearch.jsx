@@ -5,12 +5,14 @@ import Home from "../Home/Home.jsx";
 
 const GetSearch = ()=>{
     const [weatherData, setWeatherData] = useState({});
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(()=>{
         Search("Uppsala");
-    },[])
-    const Search = (search)=>{   
+    },[]);
 
+    const Search = (search)=>{   
+        setErrorMessage("");
         let url = "https://api.weatherapi.com/v1/forecast.json?key=aea4605b06e943e2818110603232201&q=" + search +"&days=1&aqi=no&alerts=no";
         
         fetch(url).then(response => response.json())
@@ -42,15 +44,16 @@ const GetSearch = ()=>{
             forecastMoonset};
 
             setWeatherData(weather);
+        }).catch(err => {
+            setErrorMessage("Nånting vart fel, testa igen : )");
         });                  
     };
 
     return(
         <>
-            <Home callback = {Search}/>
+            <Home callback = {Search} error = {errorMessage}/>
             <div className="homeDiv">
                 <div className="weatherDiv">
-                    <h3>Väder idag:</h3>
                     <WeatherItem weather = {weatherData}/>
                 </div>
             </div>

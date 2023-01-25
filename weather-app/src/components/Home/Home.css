@@ -11,7 +11,7 @@ header{
     margin-top: 0;
     width: 100%;
     height: 150px;
-    background-color: rgba(0, 0, 0, 0.596);
+    background-color: rgba(0, 0, 0, 0.527);
     align-items: center;
     flex-direction: column;
 }
@@ -51,9 +51,10 @@ nav{
 .homeDiv{
     display: flex;
     justify-items: center;
-    background-color: rgba(0, 0, 0, 0.189);
+    background-color: rgba(228, 115, 155, 0.281);
     height: 100vh;
     width: 100%;
+    flex-direction: column;
 }
 .weatherDiv{
     background-color: rgba(255, 255, 255, 0.11);;
@@ -68,7 +69,10 @@ nav{
     border-radius: 10px;
 }
 .weatherInfo{
-    font-family: 'Times New Roman', Times, serif;    
+    font-family: 'Quicksand';
+}
+.biggertxt{
+    font-size: 22px;
 }
 .searchBtn{
     border-radius: 4px;
@@ -80,4 +84,10 @@ nav{
 }
 .searchBtn:hover{
     border: solid 1px black;
+}
+.error{
+    text-align: center;
+    color: white;
+    margin-top: 1px;
+    font-family: 'Quicksand';
 }

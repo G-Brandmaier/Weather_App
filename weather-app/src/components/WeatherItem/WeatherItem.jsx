@@ -10,10 +10,9 @@ const WeatherItem = ({weather})=>{
 
     return(
         <div className="weatherInfo">
-
-            <p>{weather.city}, {weather.country}</p>
-            <p>{weather.forecastStatus}</p><img src={weather.forecastStatusIcon} alt="" />
-            <p>Temperatur- Min:{weather.forecastMinTemp} Max:{weather.forecastMaxTemp}</p>            
+            <p>{weather.city}, {weather.country} {weather.forecastDate}</p>
+            <p> Temperature: Min <span className="biggertxt">{weather.forecastMinTemp}°C</span> Max <span className="biggertxt">{weather.forecastMaxTemp}°C</span></p> 
+            <p>{weather.forecastStatus}</p><img src={weather.forecastStatusIcon} alt="" />           
         </div>
     );
 };
