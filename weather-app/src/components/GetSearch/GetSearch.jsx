@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 import WeatherItem from "../WeatherItem/WeatherItem.jsx";
 import Home from "../Home/Home.jsx";
 
+//TODO:
+/*
+- forecastday[i] i är dagen för vädret, lägga in så jag kan få upp 6 dagar framåt med väder för vald stad
+    kanske en ny komponent eller metod.
+- kolla om jag kan få till platsigenkänning vid start
+*/
+
 const GetSearch = ()=>{
     const [weatherData, setWeatherData] = useState({});
     const [errorMessage, setErrorMessage] = useState("");
@@ -13,15 +20,17 @@ const GetSearch = ()=>{
 
     const Search = (search)=>{   
         setErrorMessage("");
-        let url = "https://api.weatherapi.com/v1/forecast.json?key=aea4605b06e943e2818110603232201&q=" + search +"&days=1&aqi=no&alerts=no";
+        let url = "https://api.weatherapi.com/v1/forecast.json?key=aea4605b06e943e2818110603232201&q=" + search +"&days=6&aqi=no&alerts=no";
         
         fetch(url).then(response => response.json())
         .then(info => {
             let city = info.location.name;
             let country = info.location.country;
+            let time = info.location.localtime;
         
             let currentStatus = info.current.condition.text;
             let currentStatusIcon = info.current.condition.icon;
+            let currentTemp = info.current.temp_c;
         
             let forecastDate = info.forecast.forecastday[0].date;
             let forecastMaxTemp = info.forecast.forecastday[0].day.maxtemp_c;
@@ -38,7 +47,7 @@ const GetSearch = ()=>{
             let forecastMoonrise = info.forecast.forecastday[0].astro.moonrise;
             let forecastMoonset = info.forecast.forecastday[0].astro.moonset;
 
-            let weather = {city , country, currentStatus, currentStatusIcon, forecastDate, forecastMaxTemp,
+            let weather = {city , country, time, currentStatus, currentStatusIcon, currentTemp,forecastDate, forecastMaxTemp,
             forecastMinTemp, forecastWind, forecastTotalPrecip, forecastChanceRain, forecastChanceSnow,
             forecastStatus, forecastStatusIcon, forecastUV, forecastSunrise, forecastSunset, forecastMoonrise, 
             forecastMoonset};
