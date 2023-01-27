@@ -11,7 +11,7 @@ const Home = ({callback, error})=>{
                 <div className="searchtext">                        
                     <input type="text" placeholder="Type in a city..." ref={searchTxt}/>
                     <button className="searchBtn" onClick={()=>callback(searchTxt.current.value)}>Search</button>
-                    <p className="error">{error}</p>
+                    <div className="error"><p>{error}</p></div>
                 </div>
             </header>
         </>

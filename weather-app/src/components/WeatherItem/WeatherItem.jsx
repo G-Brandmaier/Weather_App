@@ -3,13 +3,12 @@
 const WeatherItem = ({weather})=>{
 
     
-    /*  let weather = {city , country, time, currentStatus, currentStatusIcon, currentTemp, forecastDate, forecastMaxTemp,
-        forecastMinTemp, forecastWind, forecastTotalPrecip, forecastChanceRain, forecastChanceSnow,
-        forecastStatus, forecastStatusIcon, forecastUV, forecastSunrise, forecastSunset, forecastMoonrise, 
-        forecastMoonset};*/
+    /* let weather = {city , country, time, currentStatus, currentStatusIcon, currentTemp,forecastDate, forecastMaxTemp,
+    forecastMinTemp, forecastTotalPrecip, forecastStatus, forecastStatusIcon, forecastSunrise, forecastSunset};*/
 
     return(
-        <div className="weatherInfo">
+        <div className="weatherDiv">
+            <p>- Current weather -</p>
             <p>{weather.city}, {weather.country}</p>
             <p>Local time: {weather.time}</p>
             <p> Temperature: <span className="biggertxt">{weather.currentTemp}°C</span></p> 

@@ -1,12 +1,12 @@
-import './App.css';
-import Home from './components/Home/Home.jsx';
+import SetWeather from './containers/SetWeather';
 import './components/Home/Home.css';
-import GetSearch from './components/GetSearch/GetSearch';
+import './components/WeatherItem/WeatherItem.css';
+import './components/WeatherList/WeatherList.css';
 
 function App() {
   return (
     <>
-      <GetSearch/>
+      <SetWeather/>
     </>
   );
 }
